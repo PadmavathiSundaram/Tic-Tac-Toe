@@ -21,7 +21,7 @@ class Board extends Component {
     const squares = this.state.squares.slice();
     let winner = AI.calculateWinner(squares);
       if (winner) {
-      if(this.winningPlayer === "NA"){addWinner(this.winningPlayer);}
+      if(this.winningPlayer === "NA" && addWinner != null){addWinner(this.winningPlayer);}
        this.winningPlayer = squares[winner[0]];
        alert("Game Over");
        this.setState({game: false});
@@ -43,7 +43,7 @@ class Board extends Component {
       winner = AI.calculateWinner(squares);
            if (winner) {
            this.winningPlayer = squares[winner[0]];
-      addWinner(this.winningPlayer);}
+      if (addWinner != null) { addWinner(this.winningPlayer);}}
       this.setState({squares: squares, xIsNext : !this.state.xIsNext, winner : AI.calculateWinner(squares)});
     }
   }

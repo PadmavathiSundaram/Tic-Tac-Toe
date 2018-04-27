@@ -13,20 +13,24 @@ class Game extends Component {
     this.addWinner = this.addWinner.bind(this);
   }
   addWinner(winner) {
-     let game = null;
-      if(winner === 'X'){
-        game = {user : 1, Computer: 0 };
-      } else if (winner === 'NA'){
-        game = {user : 0, Computer: 0 };
-      }else {
-        game = {user : 0, Computer: 1 };
-      }
+     let game = this.getScore(winner);
       const newItems = this.state.scores.concat([
       game
       ]);
       this.setState({scores : newItems});
     }
 
+   getScore(winner){
+    let game = null;
+    if(winner === 'X'){
+        game = {user : 1, Computer: 0 };
+      } else if (winner === 'NA'){
+        game = {user : 0, Computer: 0 };
+      }else {
+        game = {user : 0, Computer: 1 };
+      }
+      return game;
+      }
 
   render() {
     return (
